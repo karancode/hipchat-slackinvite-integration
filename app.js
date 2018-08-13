@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
+var modules = require('./modules')
 var request = require("request");
 
 const app = express();
@@ -13,15 +14,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/invite', (req, res) => {
-
-  console.log(req.body)
-  var complete_email = req.body.item.message.message
-  var regx_email = /^\/invite(?:\s+(:)?(.+?)\s*$)?/i
-  var invite_email = complete_email.match(regx_email)[2];
-  console.log("xxxxx->> " + complete_email.match(regx_email));
-  console.log("matchhed-->[0]" + complete_email.match(regx_email)[0] + "\n [1]-->" + complete_email.match(regx_email)[2]);
-  console.log("complete_email -->" + complete_email);
-  console.log("email --> " + invite_email);
+  let invite_email = modules.get_email(req.body.item.message.message);
+  
   if (!invite_email) {
     res.send({ 'Error': 'No email, No invite!' });
   }
@@ -56,7 +50,7 @@ app.post('/invite', (req, res) => {
           }
           else if (error === 'invalid_auth') {
             res.send({ 'Argh': 'invalid auth, contact admin' });
-            console.log('argh. response sent!');
+            console.log('argh. un_authed. response sent!');
           }
         }
       });
