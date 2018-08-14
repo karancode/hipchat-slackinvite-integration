@@ -1,0 +1,15 @@
+# node-app 
+node_modules
+
+# circle-ci
+.circleci
+
+# heroku
+app.json
+
+# github
+LICENSE
+README.md
+
+# others
+.git
