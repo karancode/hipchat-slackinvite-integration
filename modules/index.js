@@ -10,7 +10,7 @@ module.exports = {
     },
 
     get_hipchat_url: function(hipchat_api_url) {
-        var hipchat_url = hipchat_api_url.replace("api", "rakuten")
+        var hipchat_url = hipchat_api_url.replace("api", config.hipchat_company)
         return hipchat_url;
     },
 

@@ -5,5 +5,5 @@ module.exports = {
 
     hipchat_token : process.env.hipchat_token || 'XXXX', //your hipchat token
 
-    hipchat_company : process.env.hipchat_company || 'XXXX' // your hipchat url domain name
+    hipchat_company : process.env.hipchat_company || "XXXX" // your hipchat url domain name
 };
