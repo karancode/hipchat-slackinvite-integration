@@ -1,4 +1,5 @@
 From node:8-alpine
+LABEL maintainer="thanvikaran95@gmail.com"
 
 EXPOSE 8080
 
