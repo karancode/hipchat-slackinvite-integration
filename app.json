@@ -1,0 +1,31 @@
+{
+    "name": "Hipchat-SlackInvite",
+    "description": "Node.js app serving hipchat integration for getting invited to slack",
+    "repository": "https://github.com/kdthanvi/hipchat-slackinvite-integration",
+    "keywords": [
+        "node", 
+        "express", 
+        "hipchat", 
+        "integration", 
+        "slack", 
+        "invite"
+    ],
+    "env": {
+        "slack_ws": {
+          "description": "Your slack workspace name",
+          "value": "slack workspace name"
+        },
+        "slack_token": {
+          "description": "Your slack legacy token",
+          "value": "slack token"
+        },
+        "hipchat_token": {
+            "description": "Your hipchat room (send notification) token",
+            "value": "hipchat token"
+          },
+          "hipchat_company": {
+            "description": "Your hipchat company name for hipchat url. If not sure, put 'api' without quotes.",
+            "value": "hipchat company name"
+          }  
+    }
+}
