@@ -16,4 +16,4 @@ Hipchat integration for getting yourself an invite to slack workspace!
 * `slack_token` : Required! Your slack workspace legacy token.
 * `hipchat_company` : Required! Your hipchat company name for hipchat url. If not * sure, put 'api' without quotes.
 * `hipchat_token` : Required! Your hipchat room (send notification) token.
-_Edit the `config.js` file with your values OR Set the values when you deploy to heroku._
+* For local : _Edit the `config.js` file with your values._
