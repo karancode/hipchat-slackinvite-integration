@@ -17,3 +17,7 @@ Hipchat integration for getting yourself an invite to slack workspace!
 * `hipchat_company` : Required! Your hipchat company name for hipchat url. If not * sure, put 'api' without quotes.
 * `hipchat_token` : Required! Your hipchat room (send notification) token.
 * For local : _Edit the `config.js` file with your values._
+
+## Docker
+* Run : `docker run -d -p 8080:8080 dockt/hipchat-slackinvite-integration`
+* Docker image : [dockt/hipchat-slackinvite-integration](https://hub.docker.com/r/dockt/hipchat-slackinvite-integration/)
