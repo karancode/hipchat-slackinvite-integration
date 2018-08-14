@@ -2,20 +2,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
-var modules = require('./modules')
-var request = require("request");
+const modules = require('./modules')
+const request = require("request");
 
 const app = express();
-//app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-  res.send('Hello. Please do HTTP POST at /invite with body-parametere email : your_email_id');
+  res.send('Hello. \n Please do HTTP POST at /invite with body-parametere email : your_email_id');
 });
 
 app.post('/invite', (req, res) => {
-  let invite_email = modules.get_email(req.body.item.message.message);
   
+  let invite_email = modules.get_email(req.body.item.message.message);
+  let hipchat_url = modules.get_hipchat_url(req.body.item.room.links.self);
+
   if (!invite_email) {
     res.send({ 'Error': 'No email, No invite!' });
   }
@@ -49,7 +51,22 @@ app.post('/invite', (req, res) => {
             console.log('err. invalid-email. response sent!');
           }
           else if (error === 'invalid_auth') {
-            res.send({ 'Argh': 'invalid auth, contact admin' });
+            request.post({
+              url : hipchat_url+ '/notification?auth_token=' + config.hipchat_token,
+              form : {
+                "color" : "green",
+                "message" : "argh! invalid auth sent!",
+                "message_format" : "text",
+                "notify" : false
+              }
+            }, function(error, response, body) {
+              if(error){
+                console.log(error);
+                return;
+              }
+              //res.send({ 'Argh': 'invalid auth, contact admin' });
+              //console.log(body);
+            });
             console.log('argh. un_authed. response sent!');
           }
         }
@@ -60,5 +77,6 @@ app.post('/invite', (req, res) => {
 });
 
 app.listen(process.env.PORT || 8080, () => console.log('Example app listening on port 8080!'))
+
 
 
