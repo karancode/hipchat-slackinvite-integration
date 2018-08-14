@@ -1,4 +1,5 @@
 # hipchat-slackinvite-integration
+[![CircleCI](https://circleci.com/gh/kdthanvi/hipchat-slackinvite-integration.svg?style=svg)](https://circleci.com/gh/kdthanvi/hipchat-slackinvite-integration)
 Hipchat integration for getting yourself an invite to slack workspace! 
 
 ## Deploy
