@@ -31,7 +31,7 @@ app.post('/invite', (req, res) => {
     res.send({ 'Error': 'No email, No invite!' });
   }
   else if (invite_email === 'help') {
-    modules.hipchat_callback(hipchat_url, "gray", "Thanks for using hipchat-slackinvite-integration's help!\n You can get yourself invited using /invite <your_email_id> \n If anything goes wrong, please contact Admin! \n Details : https://github.com/kdthanvi/hipchat-slackinvite-integration",
+    modules.hipchat_callback(hipchat_url, "gray", "Thanks for using hipchat-slackinvite-integration's help!\n You can get yourself invited to " +config.slack_ws + " using /invite <your_email_id> \n Details : https://github.com/kdthanvi/hipchat-slackinvite-integration",
       config.hipchat_token);
     res.send({ "Info": "Help Details" });
     console.log("help sent");
